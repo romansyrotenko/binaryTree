@@ -51,23 +51,24 @@ public class BinaryTree {
         }
 
         return output;
-
     }
 
      public void printAllNodes(TreeNode node) {
 
-        if (node.left != null) {
-            printAllNodes(node.left);
-        }
         if (node.right != null) {
             printAllNodes(node.right);
         }
-        outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
 
+        if (node.left != null) {
+            printAllNodes(node.left);
+        }
+
+        outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
     }
 
     @Override
     public String toString() {
+
         printAllNodes(node);
         return "Current BinaryTree:\n" + outputBinaryTreeString;
     }
