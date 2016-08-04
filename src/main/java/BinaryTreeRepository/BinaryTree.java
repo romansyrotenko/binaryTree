@@ -1,12 +1,19 @@
+package BinaryTreeRepository;
+
 public class BinaryTree {
 
     private TreeNode node;
     private String outputBinaryTreeString = "";
 
+    public TreeNode getNode() {
+        return node;
+    }
+
     public void add(int x) {
 
         if (node == null) {
             node = new TreeNode(x);
+            System.out.println("Node was succesfully added!");
             return;
         }
 
@@ -17,6 +24,7 @@ public class BinaryTree {
             if (x < tempNode.key) {
                 if (tempNode.left == null) {
                     tempNode.left = new TreeNode(x);
+                    System.out.println("Node was succesfully added!");
                     return;
                 } else {
                     tempNode = tempNode.left;
@@ -24,17 +32,19 @@ public class BinaryTree {
             } else if (x > tempNode.key) {
                 if (tempNode.right == null) {
                     tempNode.right = new TreeNode(x);
+                    System.out.println("Node was succesfully added!");
                     return;
                 } else {
                     tempNode = tempNode.right;
                 }
             } else {
+                System.out.println("Node already exists! Nothing to add!");
                 return;
             }
         }
     }
 
-    public String printNode(TreeNode node) {
+    private String printNode(TreeNode node) {
 
         String output = "Node key: " + node.key + ",";
 
@@ -53,7 +63,7 @@ public class BinaryTree {
         return output;
     }
 
-     public void printAllNodes(TreeNode node) {
+     private void printAllNodes(TreeNode node) {
 
         if (node.right != null) {
             printAllNodes(node.right);
@@ -69,7 +79,12 @@ public class BinaryTree {
     @Override
     public String toString() {
 
-        printAllNodes(node);
-        return "Current BinaryTree:\n" + outputBinaryTreeString;
+        outputBinaryTreeString = "";
+        if(node != null) {
+            printAllNodes(node);
+            return "Current BinaryTree:\n" + outputBinaryTreeString;
+        } else {
+            return "oops.... BinaryTree is empty... nothing to print!";
+        }
     }
 }

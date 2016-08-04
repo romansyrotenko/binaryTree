@@ -1,21 +1,26 @@
+import BinaryTreeRepository.BinaryTree;
+import Menu.Menu;
+import ReadInput.ReadInput;
+
 public class BinaryTreeStorage {
 
     public static void main(String args[]) {
 
-    BinaryTree tree = new BinaryTree();
+        BinaryTree tree = new BinaryTree();
+        ReadInput readInput = new ReadInput();
+        Menu menu = new Menu(readInput);
+        int menuItem = -1;
 
-        tree.add(8);
-        tree.add(3);
-        tree.add(10);
-        tree.add(1);
-        tree.add(6);
-        tree.add(14);
-        tree.add(4);
-        tree.add(7);
-        tree.add(13);
+        while (menuItem != Menu.MENUEXITITEM) {
+            menuItem = menu.mainMenu();
+            if (menuItem == 1) {
+                tree.add(readInput.readNumber("Item"));
 
-        System.out.println(tree.toString());
-
+            } else if (menuItem == 99) {
+                System.out.println(tree.toString());
+            }
+        }
+        System.out.println("Exiting ...");
     }
 
 }
