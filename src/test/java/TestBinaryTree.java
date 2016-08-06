@@ -34,4 +34,16 @@ public class TestBinaryTree {
         assertEquals(tree.getNode().right.key, 11);
     }
 
+    @Test
+    public void EqualItemShouldNotBeAdded() {
+
+        BinaryTree tree = new BinaryTree();
+
+        tree.add(8);
+        tree.add(8);
+        assertEquals(tree.getNode().right, null);
+        assertEquals(tree.getNode().left, null);
+        assertEquals(tree.getNode().key, 8);
+    }
+
 }
