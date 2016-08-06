@@ -15,7 +15,7 @@ public class TestBinaryTree {
     }
 
     @Test
-    public void LessItemShouldAddToLeft() {
+    public void lessItemShouldAddToLeft() {
 
         BinaryTree tree = new BinaryTree();
 
@@ -25,7 +25,7 @@ public class TestBinaryTree {
     }
 
     @Test
-    public void GraterItemShouldAddToRight() {
+    public void graterItemShouldAddToRight() {
 
         BinaryTree tree = new BinaryTree();
 
@@ -35,7 +35,7 @@ public class TestBinaryTree {
     }
 
     @Test
-    public void EqualItemShouldNotBeAdded() {
+    public void equalItemShouldNotBeAdded() {
 
         BinaryTree tree = new BinaryTree();
 
