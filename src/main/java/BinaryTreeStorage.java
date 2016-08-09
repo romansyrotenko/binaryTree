@@ -17,7 +17,7 @@ public class BinaryTreeStorage {
                 tree.add(readInput.readNumber("Item"));
 
             } else if (menuItem == 2) {
-                tree.addGroup();
+                tree.addGroupTestItems();
 
             } else if (menuItem == 99) {
                 System.out.println("\nPreOrderPrint");

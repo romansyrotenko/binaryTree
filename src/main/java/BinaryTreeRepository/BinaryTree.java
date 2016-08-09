@@ -47,7 +47,7 @@ public class BinaryTree {
         }
     }
 
-    public void addGroup() {
+    public void addGroupTestItems() {
         this.add(8);
         this.add(3);
         this.add(10);
