@@ -1,5 +1,8 @@
 package BinaryTreeRepository;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
 
     private TreeNode node;
@@ -44,6 +47,18 @@ public class BinaryTree {
         }
     }
 
+    public void addGroup() {
+        this.add(8);
+        this.add(3);
+        this.add(10);
+        this.add(1);
+        this.add(6);
+        this.add(4);
+        this.add(7);
+        this.add(14);
+        this.add(13);
+    }
+
     private String printNode(TreeNode node) {
 
         String output = "Node key: " + node.key + ",";
@@ -63,17 +78,49 @@ public class BinaryTree {
         return output;
     }
 
-     private void printAllNodes(TreeNode node) {
+    private void printAllNodesPreOrder(TreeNode node) {
 
-        if (node.right != null) {
-            printAllNodes(node.right);
+        if (node != null) {
+            printAllNodesPreOrder(node.right);
+            printAllNodesPreOrder(node.left);
+            outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
         }
+    }
 
-        if (node.left != null) {
-            printAllNodes(node.left);
+    private void printAllNodesPostOrder(TreeNode node) {
+
+        if (node != null) {
+            outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
+            printAllNodesPostOrder(node.right);
+            printAllNodesPostOrder(node.left);
         }
+    }
 
-        outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
+    private void printAllNodesInOrder(TreeNode node) {
+
+        if (node != null) {
+            printAllNodesInOrder(node.right);
+            outputBinaryTreeString = printNode(node) + outputBinaryTreeString;
+            printAllNodesInOrder(node.left);
+        }
+    }
+
+    private void printAllNodesAcross(TreeNode node) {
+
+        Queue queue = new LinkedList<TreeNode>();
+        TreeNode tempNode;
+
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            tempNode = (TreeNode)queue.poll();
+            outputBinaryTreeString = outputBinaryTreeString + printNode(tempNode);
+            if (tempNode.left != null) {
+                queue.add(tempNode.left);
+            }
+            if (tempNode.right != null) {
+                queue.add(tempNode.right);
+            }
+        }
     }
 
     @Override
@@ -81,10 +128,45 @@ public class BinaryTree {
 
         outputBinaryTreeString = "";
         if(node != null) {
-            printAllNodes(node);
+            printAllNodesPreOrder(node);
             return "Current BinaryTree:\n" + outputBinaryTreeString;
         } else {
             return "oops.... BinaryTree is empty... nothing to print!";
         }
     }
+
+    public String toStringInOrder() {
+
+        outputBinaryTreeString = "";
+        if(node != null) {
+            printAllNodesInOrder(node);
+            return "Current BinaryTree:\n" + outputBinaryTreeString;
+        } else {
+            return "oops.... BinaryTree is empty... nothing to print!";
+        }
+    }
+
+    public String toStringPostOrder() {
+
+        outputBinaryTreeString = "";
+        if(node != null) {
+            printAllNodesPostOrder(node);
+            return "Current BinaryTree:\n" + outputBinaryTreeString;
+        } else {
+            return "oops.... BinaryTree is empty... nothing to print!";
+        }
+
+    }
+
+    public String toStringAcross() {
+
+        outputBinaryTreeString = "";
+        if(node != null) {
+            printAllNodesAcross(node);
+            return "Current BinaryTree:\n" + outputBinaryTreeString;
+        } else {
+            return "oops.... BinaryTree is empty... nothing to print!";
+        }
+    }
+
 }

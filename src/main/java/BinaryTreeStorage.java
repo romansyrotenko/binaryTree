@@ -16,8 +16,18 @@ public class BinaryTreeStorage {
             if (menuItem == 1) {
                 tree.add(readInput.readNumber("Item"));
 
+            } else if (menuItem == 2) {
+                tree.addGroup();
+
             } else if (menuItem == 99) {
+                System.out.println("\nPreOrderPrint");
                 System.out.println(tree.toString());
+                System.out.println("\nInOrderPrint");
+                System.out.println(tree.toStringInOrder());
+                System.out.println("\nPostOrderPrint");
+                System.out.println(tree.toStringPostOrder());
+                System.out.println("\nAcross");
+                System.out.println(tree.toStringAcross());
             }
         }
         System.out.println("Exiting ...");
